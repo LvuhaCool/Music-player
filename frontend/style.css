@@ -1,0 +1,439 @@
+/* ========== VARIABLES ========== */
+:root {
+    --spotify-green: #1db954;
+    --spotify-green-hover: #1ed760;
+    --bg-sidebar-dark: #000000;
+    --bg-main-dark: #121212;
+    --bg-card-dark: #181818;
+    --bg-card-hover-dark: #282828;
+    --bg-player-dark: #181818;
+    --bg-topbar-dark: rgba(0, 0, 0, 0.6);
+    --text-primary-dark: #ffffff;
+    --text-subdued-dark: #b3b3b3;
+    --border-dark: #282828;
+    --input-bg-dark: #2a2a2a;
+    --btn-nav-dark: rgba(0, 0, 0, 0.7);
+    --dropdown-bg-dark: #282828;
+    --dropdown-item-dark: #b3b3b3;
+    --progress-bg-dark: #4f4f4f;
+
+    --bg-sidebar-light: #f8f9fa;
+    --bg-main-light: #ffffff;
+    --bg-card-light: #f8f9fa;
+    --bg-card-hover-light: #e9ecef;
+    --bg-player-light: #ffffff;
+    --bg-topbar-light: #ffffff;
+    --text-primary-light: #212529;
+    --text-subdued-light: #6c757d;
+    --border-light: #dee2e6;
+    --input-bg-light: #ffffff;
+    --btn-nav-light: #e9ecef;
+    --dropdown-bg-light: #ffffff;
+    --dropdown-item-light: #212529;
+    --progress-bg-light: #e9ecef;
+
+    --bg-sidebar: var(--bg-sidebar-dark);
+    --bg-main: var(--bg-main-dark);
+    --bg-card: var(--bg-card-dark);
+    --bg-card-hover: var(--bg-card-hover-dark);
+    --bg-player: var(--bg-player-dark);
+    --bg-topbar: var(--bg-topbar-dark);
+    --text-primary: var(--text-primary-dark);
+    --text-subdued: var(--text-subdued-dark);
+    --border: var(--border-dark);
+    --input-bg: var(--input-bg-dark);
+    --btn-nav: var(--btn-nav-dark);
+    --dropdown-bg: var(--dropdown-bg-dark);
+    --dropdown-item: var(--dropdown-item-dark);
+    --progress-bg: var(--progress-bg-dark);
+}
+
+body.light-theme {
+    --bg-sidebar: var(--bg-sidebar-light);
+    --bg-main: var(--bg-main-light);
+    --bg-card: var(--bg-card-light);
+    --bg-card-hover: var(--bg-card-hover-light);
+    --bg-player: var(--bg-player-light);
+    --bg-topbar: var(--bg-topbar-light);
+    --text-primary: var(--text-primary-light);
+    --text-subdued: var(--text-subdued-light);
+    --border: var(--border-light);
+    --input-bg: var(--input-bg-light);
+    --btn-nav: var(--btn-nav-light);
+    --dropdown-bg: var(--dropdown-bg-light);
+    --dropdown-item: var(--dropdown-item-light);
+    --progress-bg: var(--progress-bg-light);
+}
+
+/* ========== BASE ========== */
+body {
+    background-color: var(--bg-main);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.2s ease;
+}
+
+/* ========== SIDEBAR (DESKTOP) ========== */
+.sidebar {
+    background-color: var(--bg-sidebar);
+    height: 100%;
+    overflow-y: auto;
+}
+.sidebar .nav-link {
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.2rem;
+    border-radius: 0.25rem;
+    color: var(--text-subdued) !important;
+    font-weight: 600;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+.sidebar .nav-link:hover {
+    color: var(--text-primary) !important;
+    background-color: var(--bg-card-hover);
+}
+.sidebar .nav-link.active {
+    color: var(--spotify-green) !important;
+    background-color: var(--bg-card-hover);
+    border-left: 3px solid var(--spotify-green);
+}
+.sidebar .playlists .nav-link {
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+/* ========== OFFCANVAS (MOBILE SIDEBAR) ========== */
+.offcanvas {
+    background-color: var(--bg-sidebar) !important;
+    color: var(--text-primary) !important;
+}
+.offcanvas .nav-link {
+    color: var(--text-subdued) !important;
+    padding: 0.75rem 1rem;
+}
+.offcanvas .nav-link:hover,
+.offcanvas .nav-link.active {
+    color: var(--text-primary) !important;
+    background-color: var(--bg-card-hover);
+}
+.offcanvas .nav-link.active {
+    border-left: 3px solid var(--spotify-green);
+}
+.offcanvas .btn-close {
+    filter: invert(1);
+}
+.light-theme .offcanvas .btn-close {
+    filter: none;
+}
+
+/* ========== MAIN CONTENT ========== */
+.main-content {
+    background: linear-gradient(180deg, var(--bg-card-hover) 0%, var(--bg-main) 100%);
+    overflow-y: auto;
+    height: 100%;
+}
+
+/* ========== TOP BAR ========== */
+.top-bar {
+    background-color: var(--bg-topbar) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+}
+.top-bar .btn-nav {
+    background-color: var(--btn-nav) !important;
+    border: none;
+    color: var(--text-primary);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+.top-bar .btn-nav:hover {
+    background-color: var(--bg-card-hover) !important;
+}
+.input-group-text {
+    background-color: var(--input-bg) !important;
+    border: 1px solid var(--border);
+    border-right: none;
+    border-radius: 20px 0 0 20px !important;
+    color: var(--text-subdued);
+}
+#searchInput {
+    background-color: var(--input-bg) !important;
+    border: 1px solid var(--border);
+    border-left: none;
+    border-radius: 0 20px 20px 0 !important;
+    padding: 0.5rem 1rem;
+    color: var(--text-primary);
+}
+#searchInput:focus {
+    box-shadow: 0 0 0 2px var(--spotify-green);
+    outline: none;
+    border-color: transparent;
+}
+#searchInput::placeholder {
+    color: var(--text-subdued);
+    font-size: 0.9rem;
+}
+
+/* ========== PROFILE BUTTON & DROPDOWN ========== */
+.btn-profile {
+    background-color: var(--btn-nav);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 0.25rem 1rem;
+    border-radius: 20px;
+    transition: background-color 0.2s;
+}
+.btn-profile:hover {
+    background-color: var(--bg-card-hover);
+    border-color: var(--border);
+    color: var(--spotify-green);
+}
+.dropdown-menu {
+    background-color: var(--dropdown-bg);
+    border: 1px solid var(--border);
+}
+.dropdown-item {
+    color: var(--dropdown-item);
+}
+.dropdown-item:hover {
+    background-color: var(--bg-card-hover);
+    color: var(--spotify-green);
+}
+
+/* ========== CARDS ========== */
+.playlist-card {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+.playlist-card:hover {
+    background-color: var(--bg-card-hover) !important;
+    transform: translateY(-4px);
+}
+.playlist-card img {
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+.playlist-card:hover img {
+    transform: scale(1.02);
+}
+.card-body {
+    padding: 0.75rem 0.5rem;
+}
+.card-title {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    color: var(--text-primary);
+}
+.card-text {
+    color: var(--text-subdued) !important;
+    font-size: 0.85rem;
+}
+
+/* ========== PLAYER BAR ========== */
+.player-bar {
+    background-color: var(--bg-player) !important;
+    border-top: 1px solid var(--border);
+    min-height: 90px;
+    transition: background-color 0.3s;
+}
+.player-bar .progress {
+    cursor: pointer;
+    background-color: var(--progress-bg);
+    border-radius: 2px;
+}
+.player-bar .progress-bar.bg-green {
+    background-color: var(--spotify-green);
+    transition: width 0.1s linear;
+}
+.player-bar .progress-bar.bg-green:hover {
+    background-color: var(--spotify-green-hover);
+}
+.player-bar .play-pause-btn {
+    font-size: 2.5rem;
+    color: var(--spotify-green);
+    transition: transform 0.1s ease, color 0.2s ease;
+}
+.player-bar .play-pause-btn:hover {
+    transform: scale(1.05);
+    color: var(--spotify-green-hover);
+}
+.player-bar .icon-btn {
+    color: var(--text-subdued);
+    transition: color 0.2s ease;
+    cursor: pointer;
+}
+.player-bar .icon-btn:hover {
+    color: var(--spotify-green);
+}
+.player-bar .player-title {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.player-bar .player-artist {
+    color: var(--text-subdued) !important;
+}
+
+/* ========== MODALS ========== */
+.modal-content {
+    background-color: var(--bg-player);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+.modal-header .btn-close {
+    filter: invert(1);
+}
+.light-theme .modal-header .btn-close {
+    filter: none;
+}
+.modal .form-control {
+    background-color: var(--input-bg);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+}
+.modal .form-control:focus {
+    border-color: var(--spotify-green);
+    box-shadow: 0 0 0 0.2rem rgba(29, 185, 84, 0.25);
+}
+.modal .list-group-item {
+    background-color: transparent;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border);
+    transition: background-color 0.2s;
+}
+.modal .list-group-item:hover {
+    background-color: var(--bg-card-hover) !important;
+}
+.modal-result-item i {
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+.modal-result-item:hover i {
+    opacity: 1;
+}
+.modal .btn-outline-success {
+    color: var(--spotify-green);
+    border-color: var(--spotify-green);
+}
+.modal .btn-outline-success:hover {
+    background-color: var(--spotify-green);
+    color: #fff;
+}
+
+/* ========== UTILITY ========== */
+.text-green {
+    color: var(--spotify-green) !important;
+}
+.bg-green {
+    background-color: var(--spotify-green) !important;
+}
+.text-subdued {
+    color: var(--text-subdued) !important;
+}
+
+/* ========== RESPONSIVE TWEAKS ========== */
+@media (max-width: 767px) {
+    .player-bar {
+        height: auto;
+        padding: 12px 8px !important;
+    }
+    .player-bar .col-12 {
+        margin-bottom: 8px;
+    }
+    .player-bar .progress {
+        height: 3px;
+    }
+    .player-bar .bi-play-circle-fill {
+        font-size: 2rem;
+    }
+    .player-bar .fs-4 {
+        font-size: 1.2rem !important;
+    }
+    .player-bar .current-time,
+    .player-bar .duration {
+        font-size: 0.7rem;
+    }
+    .main-content > .p-4 {
+        padding: 1rem !important;
+    }
+    .playlist-card .card-body {
+        padding: 0.4rem 0.2rem;
+    }
+    .playlist-card .card-title {
+        font-size: 0.8rem;
+    }
+    .playlist-card .card-text {
+        font-size: 0.7rem;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .sidebar {
+        padding: 1rem 0.75rem !important;
+    }
+    .sidebar .nav-link {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+    }
+    .sidebar .logo span {
+        font-size: 1.2rem;
+    }
+    .main-content > .p-4 {
+        padding: 1.25rem !important;
+    }
+    .top-bar .input-group {
+        width: 200px !important;
+    }
+    .playlist-card .card-title {
+        font-size: 0.85rem;
+    }
+    .playlist-card .card-text {
+        font-size: 0.7rem;
+    }
+    .player-bar .text-truncate {
+        max-width: 100px;
+    }
+    .player-bar .progress.volume-bar {
+        width: 60px !important;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    .sidebar {
+        padding: 1rem !important;
+    }
+    .sidebar .nav-link {
+        font-size: 0.95rem;
+    }
+    .main-content > .p-4 {
+        padding: 1.5rem !important;
+    }
+    .top-bar .input-group {
+        width: 220px !important;
+    }
+}
+
+/* ========== SCROLLBAR (SPOTIFY STYLE) ========== */
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #535353;
+    border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #7a7a7a;
+}
